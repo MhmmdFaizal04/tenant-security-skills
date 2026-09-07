@@ -1,0 +1,10 @@
+[
+  {"id": "idor-read", "name": "Detect IDOR on project read", "expect": "Finding reported for cross-tenant project access", "fail": "No finding reported or only status code checked"},
+  {"id": "idor-user", "name": "Detect IDOR on user read", "expect": "Finding reported for cross-tenant user access", "fail": "No finding reported"},
+  {"id": "state-mutation", "name": "Detect cross-tenant state mutation", "expect": "Database state change detected after denied PUT", "fail": "Only checked response status, not database"},
+  {"id": "enumeration", "name": "Detect user enumeration", "expect": "Cross-tenant data in user listing detected", "fail": "No content analysis performed"},
+  {"id": "secure-no-fp", "name": "No false positives on secure API", "expect": "Zero findings on secure fixture", "fail": "False positive reported on properly secured endpoint"},
+  {"id": "legitimate-access", "name": "Legitimate access verified first", "expect": "Baseline test confirms same-tenant access works", "fail": "Jumped to cross-tenant testing without baseline"},
+  {"id": "regression-gen", "name": "Regression tests generated", "expect": "Executable test file with content-based assertions", "fail": "No tests generated or tests only check status codes"},
+  {"id": "evidence-report", "name": "Evidence report delivered", "expect": "Report with PAR matrix, evidence, and remediation", "fail": "Report missing evidence or using checklist format"}
+]

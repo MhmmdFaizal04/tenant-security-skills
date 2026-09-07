@@ -1,0 +1,38 @@
+[
+  {
+    "id": "VULN-001",
+    "type": "IDOR",
+    "severity": "critical",
+    "endpoint": "GET /api/projects/<id>",
+    "description": "Any authenticated user can read projects from other tenants by ID",
+    "evidence": "Acme admin can read Globex Project Gamma (id=3). Response contains tenant_id=2 data.",
+    "state_mutation": false
+  },
+  {
+    "id": "VULN-002",
+    "type": "state_mutation",
+    "severity": "critical",
+    "endpoint": "PUT /api/projects/<id>",
+    "description": "Any authenticated user can modify projects from other tenants",
+    "evidence": "Acme admin can update Globex Project Gamma budget. Database confirms modification.",
+    "state_mutation": true
+  },
+  {
+    "id": "VULN-003",
+    "type": "enumeration",
+    "severity": "high",
+    "endpoint": "GET /api/users",
+    "description": "User listing returns users from all tenants",
+    "evidence": "Acme admin receives user records with tenant_id=2 in response body.",
+    "state_mutation": false
+  },
+  {
+    "id": "VULN-004",
+    "type": "IDOR",
+    "severity": "high",
+    "endpoint": "GET /api/users/<id>",
+    "description": "Any authenticated user can read user profiles from other tenants",
+    "evidence": "Acme admin can read Globex user charlie (id=3). Response contains tenant_id=2 data.",
+    "state_mutation": false
+  }
+]
